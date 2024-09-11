@@ -1,7 +1,9 @@
 
+using Core.Models;
+
 namespace Core.Features.FileReader.InterfaceAdapters;
 
 public interface FileReaderRepositoryInterface
 {
-    public IEnumerable<dynamic> ReadAsArray(string path);
+    public Result<IEnumerable<T>> ReadAsArray<T>(string path);
 }

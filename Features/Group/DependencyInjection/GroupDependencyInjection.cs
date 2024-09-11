@@ -8,11 +8,14 @@ public class GroupDependencyInjection
 {
     public static void Init(IServiceCollection services)
     {
+        services.AddScoped<GroupFileImporterRepositoryInterface, GroupFileImporterRepository>();
+
         services.AddScoped<GroupRepositoryInterface, GroupRepository>();
         services.AddScoped<CachedGroupRepositoryInterface, CachedGroupRepository>();
 
         services.AddScoped<GetAllGroupsUseCase, GetAllGroupsUseCase>();
         services.AddScoped<GetGroupByIdUseCase, GetGroupByIdUseCase>();
         services.AddScoped<GetListTopicsByGroupIdUseCase, GetListTopicsByGroupIdUseCase>();
+        services.AddScoped<GetAllGroupsFromFileUseCase, GetAllGroupsFromFileUseCase>();
     }
 }
