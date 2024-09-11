@@ -15,7 +15,7 @@ public class VocabularyEntity
     [Required(ErrorMessage = "Name is required")]
     [JsonProperty]
     [StringLength(100)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [JsonProperty]
     public string? Pronunciation { get; set; }
@@ -23,7 +23,7 @@ public class VocabularyEntity
     [Required(ErrorMessage = "Meaning is required")]
     [JsonProperty]
     [StringLength(100)]
-    public string Meaning { get; set; }
+    public required string Meaning { get; set; }
 
     [JsonProperty]
     [StringLength(300)]
@@ -31,5 +31,5 @@ public class VocabularyEntity
 
     [JsonProperty]
     public int TopicId { get; set; }
-    public TopicEntity Topic { get; set; }
+    public TopicEntity? Topic { get; }
 }
