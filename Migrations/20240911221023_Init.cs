@@ -50,7 +50,7 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Pronunciation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Pronunciation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Meaning = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     TopicId = table.Column<int>(type: "int", nullable: false)

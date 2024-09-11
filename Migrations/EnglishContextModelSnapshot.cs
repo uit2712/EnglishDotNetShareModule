@@ -85,7 +85,8 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Pronunciation")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("TopicId")
                         .HasColumnType("int");

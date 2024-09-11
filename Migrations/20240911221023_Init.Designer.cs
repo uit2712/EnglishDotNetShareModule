@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnglishAspDotNetMvc.Core.Migrations
 {
     [DbContext(typeof(EnglishContext))]
-    [Migration("20240911220734_Init")]
+    [Migration("20240911221023_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -88,7 +88,8 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Pronunciation")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("TopicId")
                         .HasColumnType("int");

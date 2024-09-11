@@ -18,6 +18,7 @@ public class VocabularyEntity
     public required string Name { get; set; }
 
     [JsonProperty]
+    [StringLength(100)]
     public string? Pronunciation { get; set; }
 
     [Required(ErrorMessage = "Meaning is required")]
