@@ -1,8 +1,6 @@
-using Core.Features.Topic.Entities;
 using Core.Features.Topic.InterfaceAdapters;
 using Core.Features.Topic.Repositories;
 using Core.Features.Topic.UseCases;
-using Core.Models;
 
 namespace Core.Features.Topic.DependencyInjection;
 
