@@ -32,5 +32,5 @@ public class VocabularyEntity
 
     [JsonProperty]
     public int TopicId { get; set; }
-    public TopicEntity? Topic { get; }
+    public virtual TopicEntity? Topic { get; set; }
 }
