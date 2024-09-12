@@ -21,14 +21,6 @@ public class TopicFileImporterRepository : DataFileImporterRepositoryInterface<R
         string path = @"/app/docker/export-db/Topics.csv";
         var getFileContentResult = _fileReader.ReadAsArray<TopicEntity>(path);
 
-        if (null != getFileContentResult.Data)
-        {
-            foreach (var item in getFileContentResult.Data)
-            {
-                item.Group = null;
-            }
-        }
-
         result.Success = getFileContentResult.Success;
         result.Message = getFileContentResult.Message;
         result.Data = getFileContentResult.Data;

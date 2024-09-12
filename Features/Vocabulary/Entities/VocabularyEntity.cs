@@ -1,6 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Core.Features.Topic.Entities;
+using CsvHelper.Configuration.Attributes;
 using Newtonsoft.Json;
 
 namespace Core.Features.Vocabulary.Entities;
@@ -31,6 +32,8 @@ public class VocabularyEntity
     public string? Image { get; set; }
 
     [JsonProperty]
-    public int TopicId { get; set; }
+    [Optional]
+    public int? TopicId { get; set; }
+    [Optional]
     public virtual TopicEntity? Topic { get; set; }
 }
