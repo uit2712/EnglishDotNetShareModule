@@ -12,8 +12,10 @@ public class GetTopicByIdUseCase
         _topic = topic;
     }
 
-    public async Task<GetTopicResult> Invoke(int id)
+    public async Task<GetTopicResult> Invoke(int? id)
     {
-        return await _topic.Get(id);
+        var validId = id.HasValue ? id.Value : 0;
+
+        return await _topic.Get(validId);
     }
 }

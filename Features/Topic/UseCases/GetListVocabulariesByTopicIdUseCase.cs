@@ -17,11 +17,12 @@ public class GetListVocabulariesByTopicIdUseCase
         _topic = topic;
     }
 
-    public async Task<GetListVocabulariesByTopicIdResult> Invoke(int topicId)
+    public async Task<GetListVocabulariesByTopicIdResult> Invoke(int? topicId)
     {
+        var validTopicId = topicId.HasValue ? topicId.Value : 0;
         var result = new GetListVocabulariesByTopicIdResult();
 
-        var getTopicResult = await _topic.Get(topicId);
+        var getTopicResult = await _topic.Get(validTopicId);
         if (getTopicResult.isHasData() == false)
         {
             result.Message = getTopicResult.Message;
@@ -30,7 +31,7 @@ public class GetListVocabulariesByTopicIdUseCase
 
         result.Topic = getTopicResult.Data;
 
-        var getListVocabulariesResult = await _voca.GetByTopicId(topicId);
+        var getListVocabulariesResult = await _voca.GetByTopicId(validTopicId);
         if (getListVocabulariesResult.isHasData())
         {
             result.Success = true;
