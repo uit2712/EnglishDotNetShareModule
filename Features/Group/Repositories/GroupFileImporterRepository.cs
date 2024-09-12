@@ -18,7 +18,7 @@ public class GroupFileImporterRepository : DataFileImporterRepositoryInterface<R
     public Result<IEnumerable<GroupEntity>> GetAll()
     {
         var result = new GetListGroupsResult();
-        string path = @"/app/docker/export-db/Groups.csv";
+        string path = @"/app/Core/Data/Groups.csv";
         var getFileContentResult = _fileReader.ReadAsArray<GroupEntity>(path);
 
         result.Success = getFileContentResult.Success;

@@ -18,7 +18,7 @@ public class VocabularyFileImporterRepository : DataFileImporterRepositoryInterf
     public Result<IEnumerable<VocabularyEntity>> GetAll()
     {
         var result = new GetListVocabulariesResult();
-        string path = @"/app/docker/export-db/Vocabularies.csv";
+        string path = @"/app/Core/Data/Vocabularies.csv";
         var getFileContentResult = _fileReader.ReadAsArray<VocabularyEntity>(path);
 
         if (null != getFileContentResult.Data)
