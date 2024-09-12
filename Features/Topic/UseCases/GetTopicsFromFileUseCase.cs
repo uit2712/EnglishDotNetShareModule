@@ -1,19 +1,13 @@
-using Core.Features.Topic.InterfaceAdapters;
-using Core.Features.Topic.Models;
+using Core.Common.InterfaceAdapters;
+using Core.Common.UseCases;
+using Core.Features.Topic.Entities;
+using Core.Models;
 
 namespace Core.Features.Topic.UseCases;
 
-public class GetTopicsFromFileUseCase
+public class GetTopicsFromFileUseCase : GetDataFromFileUseCase<TopicEntity>
 {
-    private TopicFileImporterRepositoryInterface db;
-
-    public GetTopicsFromFileUseCase(TopicFileImporterRepositoryInterface db)
+    public GetTopicsFromFileUseCase(DataFileImporterRepositoryInterface<Result<IEnumerable<TopicEntity>>> db) : base(db)
     {
-        this.db = db;
-    }
-
-    public GetListTopicsResult Invoke()
-    {
-        return db.GetAll();
     }
 }

@@ -23,6 +23,6 @@ public class TopicDependencyInjection
         services.AddScoped<UpdateTopicUseCase, UpdateTopicUseCase>();
         services.AddScoped<GetTopicByIdUseCase, GetTopicByIdUseCase>();
         services.AddScoped<SeedDataFromFileUseCase<TopicEntity>, SeedTopicsFromFileUseCase>();
-        services.AddScoped<GetTopicsFromFileUseCase, GetTopicsFromFileUseCase>();
+        services.AddScoped<GetDataFromFileUseCase<TopicEntity>, GetTopicsFromFileUseCase>();
     }
 }
