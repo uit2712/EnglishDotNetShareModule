@@ -28,6 +28,12 @@ public class SeedGroupFromFileRepository : SeedGroupFromFileRepositoryInterface
 
         using (var transaction = context.Database.BeginTransaction())
         {
+            if (context.Groups.Any())
+            {
+                result.Message = "Already seed data";
+                return result;
+            }
+
             try
             {
                 context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.groups ON;");

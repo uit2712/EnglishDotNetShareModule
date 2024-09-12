@@ -10,9 +10,12 @@ public class TopicDependencyInjection
     {
         services.AddScoped<TopicRepositoryInterface, TopicRepository>();
         services.AddScoped<CachedTopicRepositoryInterface, CachedTopicRepository>();
+        services.AddScoped<TopicFileImporterRepositoryInterface, TopicFileImporterRepository>();
+        services.AddScoped<SeedTopicFromFileRepositoryInterface, SeedTopicFromFileRepository>();
 
         services.AddScoped<GetListVocabulariesByTopicIdUseCase, GetListVocabulariesByTopicIdUseCase>();
         services.AddScoped<UpdateTopicUseCase, UpdateTopicUseCase>();
         services.AddScoped<GetTopicByIdUseCase, GetTopicByIdUseCase>();
+        services.AddScoped<SeedTopicsFromFileUseCase, SeedTopicsFromFileUseCase>();
     }
 }

@@ -16,6 +16,6 @@ public class GroupEntity
     [Required(ErrorMessage = "Name is required")]
     [JsonProperty]
     [StringLength(100)]
-    public string Name { get; set; }
-    public ICollection<TopicEntity> Topics { get; }
+    public required string Name { get; set; }
+    public ICollection<TopicEntity>? Topics { get; }
 }
