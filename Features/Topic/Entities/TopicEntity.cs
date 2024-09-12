@@ -21,7 +21,7 @@ public class TopicEntity
     [Required(ErrorMessage = "Group Id is required")]
     [JsonProperty]
     public int GroupId { get; set; }
-    public GroupEntity Group { get; set; }
+    public GroupEntity? Group { get; set; }
 
-    public ICollection<VocabularyEntity> Vocabularies { get; }
+    public ICollection<VocabularyEntity>? Vocabularies { get; }
 }

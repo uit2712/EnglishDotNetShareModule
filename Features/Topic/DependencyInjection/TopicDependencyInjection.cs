@@ -17,5 +17,6 @@ public class TopicDependencyInjection
         services.AddScoped<UpdateTopicUseCase, UpdateTopicUseCase>();
         services.AddScoped<GetTopicByIdUseCase, GetTopicByIdUseCase>();
         services.AddScoped<SeedTopicsFromFileUseCase, SeedTopicsFromFileUseCase>();
+        services.AddScoped<GetTopicsFromFileUseCase, GetTopicsFromFileUseCase>();
     }
 }
