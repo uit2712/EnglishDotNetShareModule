@@ -1,3 +1,4 @@
+using Core.Features.Topic.Entities;
 using Core.Features.Topic.InterfaceAdapters;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -6,23 +7,19 @@ namespace Core.Features.Topic.Repositories;
 
 public class SeedTopicFromFileRepository : SeedTopicFromFileRepositoryInterface
 {
-    private TopicFileImporterRepositoryInterface fileImporter;
     private EnglishContext.EnglishContext context;
 
-    public SeedTopicFromFileRepository(TopicFileImporterRepositoryInterface fileImporter, EnglishContext.EnglishContext context)
+    public SeedTopicFromFileRepository(EnglishContext.EnglishContext context)
     {
-        this.fileImporter = fileImporter;
         this.context = context;
     }
 
-    public Result<bool> Seed()
+    public Result<bool> Seed(IEnumerable<TopicEntity> list)
     {
         var result = new Result<bool>();
-        var getDataResult = fileImporter.GetAll();
-
-        if (false == getDataResult.Success || null == getDataResult.Data)
+        if (list.Count() == 0)
         {
-            result.Message = getDataResult.Message;
+            result.Message = "List is empty";
             return result;
         }
 
@@ -37,7 +34,7 @@ public class SeedTopicFromFileRepository : SeedTopicFromFileRepositoryInterface
             try
             {
                 context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.topics ON;");
-                context.Topics.AddRange(getDataResult.Data);
+                context.Topics.AddRange(list);
                 context.SaveChanges();
                 context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.topics OFF;");
                 transaction.Commit();
