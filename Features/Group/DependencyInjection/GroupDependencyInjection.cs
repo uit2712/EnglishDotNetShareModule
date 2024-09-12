@@ -23,5 +23,6 @@ public class GroupDependencyInjection
         services.AddScoped<GetGroupByIdUseCase, GetGroupByIdUseCase>();
         services.AddScoped<GetListTopicsByGroupIdUseCase, GetListTopicsByGroupIdUseCase>();
         services.AddScoped<SeedDataFromFileUseCase<GroupEntity>, SeedGroupsFromFileUseCase>();
+        services.AddScoped<GetDataFromFileUseCase<GroupEntity>, GetListGroupsFromFileUseCase>();
     }
 }
