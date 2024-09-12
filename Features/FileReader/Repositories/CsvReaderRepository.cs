@@ -35,6 +35,7 @@ public class CsvReaderRepository : FileReaderRepositoryInterface
         }
 
         result.Success = true;
+        result.Message = "Get data success";
         result.Data = Data;
         return result;
     }

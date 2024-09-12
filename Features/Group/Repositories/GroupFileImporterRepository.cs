@@ -21,7 +21,7 @@ public class GroupFileImporterRepository : GroupFileImporterRepositoryInterface
         var getFileContentResult = _fileReader.ReadAsArray<GroupEntity>(path);
 
         result.Success = getFileContentResult.Success;
-        result.Message = getFileContentResult.Message + ": " + path;
+        result.Message = getFileContentResult.Message;
         result.Data = getFileContentResult.Data;
 
         return result;
