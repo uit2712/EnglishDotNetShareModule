@@ -16,7 +16,7 @@ public class TopicEntity
     [Required(ErrorMessage = "Name is required")]
     [JsonProperty]
     [StringLength(100)]
-    public string Name { get; set; }
+    public required string Name { get; set; }
 
     [Required(ErrorMessage = "Group Id is required")]
     [JsonProperty]
