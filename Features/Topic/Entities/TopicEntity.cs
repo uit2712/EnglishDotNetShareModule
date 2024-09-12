@@ -18,10 +18,9 @@ public class TopicEntity
     [StringLength(100)]
     public required string Name { get; set; }
 
-    [Required(ErrorMessage = "Group Id is required")]
     [JsonProperty]
-    public int GroupId { get; set; }
-    public GroupEntity? Group { get; set; }
+    public int? GroupId { get; set; }
+    public virtual GroupEntity? Group { get; set; }
 
     public ICollection<VocabularyEntity>? Vocabularies { get; }
 }

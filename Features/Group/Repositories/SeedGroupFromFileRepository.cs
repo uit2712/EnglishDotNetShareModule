@@ -1,11 +1,11 @@
+using Core.Common.InterfaceAdapters;
 using Core.Features.Group.Entities;
-using Core.Features.Group.InterfaceAdapters;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features.Group.Repositories;
 
-public class SeedGroupFromFileRepository : SeedGroupFromFileRepositoryInterface
+public class SeedGroupFromFileRepository : SeedDataFromFileRepositoryInterface<GroupEntity>
 {
 
     private EnglishContext.EnglishContext context;
@@ -39,6 +39,9 @@ public class SeedGroupFromFileRepository : SeedGroupFromFileRepositoryInterface
                 context.SaveChanges();
                 context.Database.ExecuteSqlRaw("SET IDENTITY_INSERT dbo.groups OFF;");
                 transaction.Commit();
+
+                result.Success = true;
+                result.Message = "Seed data success";
             }
             catch (Exception ex)
             {

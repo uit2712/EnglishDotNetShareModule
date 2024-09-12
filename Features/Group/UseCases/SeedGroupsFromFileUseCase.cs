@@ -1,24 +1,13 @@
-using Core.Features.Group.InterfaceAdapters;
+using Core.Common.InterfaceAdapters;
+using Core.Common.UseCases;
+using Core.Features.Group.Entities;
 using Core.Models;
 
 namespace Core.Features.Group.UseCases;
 
-public class SeedGroupsFromFileUseCase
+public class SeedGroupsFromFileUseCase : SeedDataFromFileUseCase<GroupEntity>
 {
-    private GroupFileImporterRepositoryInterface fileImporter;
-    private SeedGroupFromFileRepositoryInterface seeder;
-
-    public SeedGroupsFromFileUseCase(SeedGroupFromFileRepositoryInterface seeder, GroupFileImporterRepositoryInterface fileImporter)
+    public SeedGroupsFromFileUseCase(SeedDataFromFileRepositoryInterface<GroupEntity> seeder, DataFileImporterRepositoryInterface<Result<IEnumerable<GroupEntity>>> fileImporter) : base(seeder, fileImporter)
     {
-        this.seeder = seeder;
-        this.fileImporter = fileImporter;
-    }
-
-    public Result<bool> Invoke()
-    {
-        var getDataResult = fileImporter.GetAll();
-        var list = null != getDataResult.Data ? getDataResult.Data : [];
-
-        return seeder.Seed(list);
     }
 }
