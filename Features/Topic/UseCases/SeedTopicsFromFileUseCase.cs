@@ -1,24 +1,13 @@
-using Core.Features.Topic.InterfaceAdapters;
+using Core.Common.InterfaceAdapters;
+using Core.Common.UseCases;
+using Core.Features.Topic.Entities;
 using Core.Models;
 
 namespace Core.Features.Topic.UseCases;
 
-public class SeedTopicsFromFileUseCase
+public class SeedTopicsFromFileUseCase : SeedDataFromFileUseCase<TopicEntity>
 {
-    private SeedTopicFromFileRepositoryInterface seeder;
-    private TopicFileImporterRepositoryInterface fileImporter;
-
-    public SeedTopicsFromFileUseCase(SeedTopicFromFileRepositoryInterface seeder, TopicFileImporterRepositoryInterface fileImporter)
+    public SeedTopicsFromFileUseCase(SeedDataFromFileRepositoryInterface<TopicEntity> seeder, DataFileImporterRepositoryInterface<Result<IEnumerable<TopicEntity>>> fileImporter) : base(seeder, fileImporter)
     {
-        this.seeder = seeder;
-        this.fileImporter = fileImporter;
-    }
-
-    public Result<bool> Invoke()
-    {
-        var getDataResult = fileImporter.GetAll();
-        var list = null != getDataResult.Data ? getDataResult.Data : [];
-
-        return seeder.Seed(list);
     }
 }

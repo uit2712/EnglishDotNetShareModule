@@ -1,11 +1,11 @@
+using Core.Common.InterfaceAdapters;
 using Core.Features.Topic.Entities;
-using Core.Features.Topic.InterfaceAdapters;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Core.Features.Topic.Repositories;
 
-public class SeedTopicFromFileRepository : SeedTopicFromFileRepositoryInterface
+public class SeedTopicFromFileRepository : SeedDataFromFileRepositoryInterface<TopicEntity>
 {
     private EnglishContext.EnglishContext context;
 
