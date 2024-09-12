@@ -34,7 +34,8 @@ public class EnglishContext : DbContext, IEnglishContext
             .HasMany(e => e.Topics)
             .WithOne(e => e.Group)
             .HasForeignKey(e => e.GroupId)
-            .HasPrincipalKey(e => e.Id);
+            .HasPrincipalKey(e => e.Id)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 
     private void CreateTableTopic(ModelBuilder modelBuilder)
@@ -47,7 +48,8 @@ public class EnglishContext : DbContext, IEnglishContext
             .HasMany(e => e.Vocabularies)
             .WithOne(e => e.Topic)
             .HasForeignKey(e => e.TopicId)
-            .HasPrincipalKey(e => e.Id);
+            .HasPrincipalKey(e => e.Id)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 
     private void CreateTableVocabulary(ModelBuilder modelBuilder)

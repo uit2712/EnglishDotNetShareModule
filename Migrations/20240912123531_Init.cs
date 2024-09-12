@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace EnglishAspDotNetMvc.Core.Migrations
+namespace english_api_dotnet.Core.Migrations
 {
     /// <inheritdoc />
     public partial class Init : Migration
@@ -30,7 +30,7 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    GroupId = table.Column<int>(type: "int", nullable: false)
+                    GroupId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,7 +40,7 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                         column: x => x.GroupId,
                         principalTable: "groups",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -53,7 +53,7 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                     Pronunciation = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Meaning = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Image = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
-                    TopicId = table.Column<int>(type: "int", nullable: false)
+                    TopicId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -63,7 +63,7 @@ namespace EnglishAspDotNetMvc.Core.Migrations
                         column: x => x.TopicId,
                         principalTable: "topics",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateIndex(

@@ -27,5 +27,5 @@ public class TopicEntity
     public virtual GroupEntity? Group { get; set; }
 
     [Optional]
-    public ICollection<VocabularyEntity>? Vocabularies { get; }
+    public virtual ICollection<VocabularyEntity>? Vocabularies { get; }
 }

@@ -10,7 +10,7 @@ public class GroupEntity
 {
     [Key]
     [JsonProperty]
-    [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Name is required")]
