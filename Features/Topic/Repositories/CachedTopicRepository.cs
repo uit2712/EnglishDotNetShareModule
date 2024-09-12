@@ -22,7 +22,7 @@ public class CachedTopicRepository : CachedTopicRepositoryInterface
     public async Task<GetListTopicsResult> GetAll()
     {
         var result = new GetListTopicsResult();
-        var keyCache = this.GetAllKeyCache();
+        var keyCache = GetAllKeyCache();
         var cachedData = await _cache.GetAsync(keyCache);
 
         IEnumerable<int> listIds = new List<int>();
@@ -37,7 +37,7 @@ public class CachedTopicRepository : CachedTopicRepositoryInterface
 
         if (listIds.Count() > 0)
         {
-            var getTopicResults = await Task.WhenAll(listIds.Select(id => this.Get(id)));
+            var getTopicResults = await Task.WhenAll(listIds.Select(id => Get(id)));
 
             result.Success = true;
             result.Message = "Get all topics from cache succes";
@@ -71,7 +71,7 @@ public class CachedTopicRepository : CachedTopicRepositoryInterface
             return result;
         }
 
-        var keyCache = this.GetIdKeyCache(id);
+        var keyCache = GetIdKeyCache(id);
         var cachedData = await _cache.GetAsync(keyCache);
 
         if (cachedData != null)
@@ -84,10 +84,10 @@ public class CachedTopicRepository : CachedTopicRepositoryInterface
             return result;
         }
 
-        result = await this._db.Get(id);
+        result = await _db.Get(id);
         if (result.Success && null != result.Data)
         {
-            await this._cache.SetAsync(keyCache, CacheHelper.Encode(result.Data));
+            await _cache.SetAsync(keyCache, CacheHelper.Encode(result.Data));
         }
 
         return result;

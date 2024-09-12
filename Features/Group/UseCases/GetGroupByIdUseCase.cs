@@ -12,8 +12,10 @@ public class GetGroupByIdUseCase
         _group = group;
     }
 
-    public async Task<GetGroupResult> Invoke(int id)
+    public async Task<GetGroupResult> Invoke(int? id)
     {
-        return await _group.Get(id);
+        var validId = id.HasValue ? id.Value : 0;
+
+        return await _group.Get(validId);
     }
 }

@@ -12,8 +12,10 @@ public class GetListTopicsByGroupIdUseCase
         this.topic = topic;
     }
 
-    public async Task<GetListTopicsResult> Invoke(int id)
+    public async Task<GetListTopicsResult> Invoke(int? id)
     {
-        return await topic.GetByGroupId(id);
+        var validId = id.HasValue ? id.Value : 0;
+
+        return await topic.GetByGroupId(validId);
     }
 }
