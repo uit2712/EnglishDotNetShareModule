@@ -1,4 +1,5 @@
 using Core.Common.InterfaceAdapters;
+using Core.Context;
 using Core.Features.Vocabulary.Entities;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -7,9 +8,9 @@ namespace Core.Features.Vocabulary.Repositories;
 
 public class SeedVocabularyFromFileRepository : SeedDataFromFileRepositoryInterface<VocabularyEntity>
 {
-    private EnglishContext.EnglishContext context;
+    private EnglishContext context;
 
-    public SeedVocabularyFromFileRepository(EnglishContext.EnglishContext context)
+    public SeedVocabularyFromFileRepository(EnglishContext context)
     {
         this.context = context;
     }

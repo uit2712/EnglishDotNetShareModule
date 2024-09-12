@@ -1,4 +1,5 @@
 using Core.Common.InterfaceAdapters;
+using Core.Context;
 using Core.Features.Group.Entities;
 using Core.Models;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +9,9 @@ namespace Core.Features.Group.Repositories;
 public class SeedGroupFromFileRepository : SeedDataFromFileRepositoryInterface<GroupEntity>
 {
 
-    private EnglishContext.EnglishContext context;
+    private EnglishContext context;
 
-    public SeedGroupFromFileRepository(EnglishContext.EnglishContext context)
+    public SeedGroupFromFileRepository(EnglishContext context)
     {
         this.context = context;
     }

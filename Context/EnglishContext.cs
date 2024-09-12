@@ -3,7 +3,7 @@ using Core.Features.Topic.Entities;
 using Core.Features.Vocabulary.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Core.EnglishContext;
+namespace Core.Context;
 
 public class EnglishContext : DbContext, IEnglishContext
 {

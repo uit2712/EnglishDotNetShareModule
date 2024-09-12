@@ -1,5 +1,5 @@
 using Core.Constants;
-using Core.EnglishContext;
+using Core.Context;
 using Core.Features.Vocabulary.InterfaceAdapters;
 using Core.Features.Vocabulary.Models;
 using Microsoft.EntityFrameworkCore;
